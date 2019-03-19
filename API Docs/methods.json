@@ -1,0 +1,98 @@
+{
+    "addMetadata": {
+        "path": "/metadata/addMetadata",
+        "httpMethod": "POST",
+        "description": "Adds a content metadata to work with",
+        "parameters": {
+            "$ref": "#/models-definition/Metadata"
+        },
+        "responses": {
+            "201": {
+                "description": "Metadata created",
+                "body": {
+                    "$ref": "#/models-definition/Metadata"
+                }
+            },
+            "400": {
+                "description": "Invalid input, object invalid"
+            },
+            "409": {
+                "description": "An existing item already exists"
+            }
+        }
+    },
+    "getAllMetadata": {
+        "path": "/metadata/getAllMetadata",
+        "httpMethod": "GET",
+        "description": "Gets all metadata registered",
+        "parameters": {
+            "$ref": "#/models-definition/Metadata"
+        },
+        "responses": {
+            "200": {
+                "description": "OK",
+                "body": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/models-definition/Metadata"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "getMetadata": {
+        "path": "/metadata/getMetadata",
+        "httpMethod": "GET",
+        "description": "Gets metadata by ID",
+        "paramaters": {
+            "id": { "type": "ObjectId", "required": false },
+            "name": { "type": "string", "required": false }
+        },
+        "responses": {
+            "200": {
+                "description": "OK",
+                "body": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/models-definition/Metadata"
+                        }
+                    }
+                }
+            },
+            "404": {
+                "description": "Object not found"
+            }
+        }
+    },
+    "updateMetadata": {
+        "path": "/metadata/updateMetadata?id={id}",
+        "httpMethod": "PUT",
+        "description": "Updates specific Metadata",
+        "paramaters": {
+            "id": { "type": "string", "required": true },
+            "item": { 
+                "type": "object",
+                "properties": {
+                    "$ref": "#/models-definition/Metadata"
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Metadata updated",
+                "body": {
+                    "$ref": "#/models-definition/Metadata"
+                }
+            },
+            "400": {
+                "description": "Invalid input, object invalid"
+            },
+            "404": {
+                "description": "Object not found"
+            }
+        }
+    }
+}

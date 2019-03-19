@@ -1,0 +1,17 @@
+{
+    "status": "definition",
+    "document": {
+        "name": "user",
+        "description": "asdasd",
+        "attributes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "firstname": {
+                    "type": "string",
+                    "length": 16
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "Metadata": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "format": "uuid",
+                "example": "d290f1ee-6c54-4b01-90e6-d701748f0851",
+                "required": true
+            },
+            "name": {
+                "type": "string",
+                "required": true
+            },
+            "owner_id": {
+                "type": "string",
+                "required": true
+            },
+            "created_at": {
+                "type": "date",
+                "required": true
+            },
+            "model": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/Attribute"
+                },
+                "required": true
+            }
+        }
+    },
+    "Attribute": {
+        "type": "object",
+        "properties": {
+            "label": {
+                "type": "string",
+                "max_length": 25,
+                "required": true
+            },
+            "machine_name": {
+                "type": "string",
+                "max_length": 25,
+                "required": true
+            },
+            "type": {
+                "type": "string",
+                "max_length": 25,
+                "required": true
+            },
+            "max_length": {
+                "type": "number"
+            },
+            "min_length": {
+                "type": "number"
+            },
+            "properties": {
+                "$ref": "#/Attribute"
+            },
+            "items": {
+                "type": "string",
+                "properties": {
+                    "$ref": "#/Attribute"
+                }
+            }
+        }
+    }
+}

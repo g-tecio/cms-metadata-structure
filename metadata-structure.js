@@ -1,30 +1,44 @@
 /* Metadata structure */
-let a = {
-    id: { type: 'string', maxLength: 16, minLength: 16 },
-    name: { type: 'string', maxLength: 25 },
-    date: { type: 'timestamp',  maxLength: 60 },
-    owner_id: { type: 'string', maxLength: 16, minLength: 16 },
-    schema: {
-        type: 'array',
-        items: {
-            type: 'object',
-            properties: {
-                label: { type: 'string', maxLength: 25 },
-                machine_name: { type: 'string', maxLength: 25 },
-                type: { type: 'string', maxLength: 16 },
-                max_length: { type: 'number' }
+let MetadataStructure = {
+    id_metadata: { 
+        type: 'string',
+        maxLength: 16,
+        minLength: 16,
+        required: 'true'
+    },
+    name: {
+        type: 'string',
+        maxLength: 25
+    },
+    attributes: {
+        date: { type: 'timestamp', maxLength: 60 },
+        owner_id: { type: 'string', maxLength: 16, minLength: 16 },
+        model: {
+            type: 'array',
+            items: {
+                type: 'object',
+                properties: {
+                    label: { type: 'string', maxLength: 25, required: true },
+                    machine_name: { type: 'string', maxLength: 25, required: true },
+                    type: { type: 'string', maxLength: 16, required: true },
+                    max_length: { type: 'number' },
+                    min_length: { type: 'number' },
+                    items: { type: 'object' }
+                }
             }
         }
     }
 }
- 
+
+
+
 /* News Metadata */
-let b = {
-    id: '1545412468248DI7',
+let NewsMetadata = {
+    id_metadata: '1545412468248DI7',
     name: 'News Metadata',
     date: 'Tue Feb 26 2019 09:05:23 GMT-0600 (Central Standard Time)',
     owner_id: '1546022105100HA3',
-    schema: [
+    model: [
         { label: 'Metadata ID', machine_name: 'metadata_id', type: 'string', max_length: 16, required: true },
         { label: 'Metadata Name', machine_name: 'metadata_name', type: 'string', max_length: 16, required: true },
         { label: 'Slugline', machine_name: 'slugline', type: 'string', max_length: 256, required: true },
@@ -43,11 +57,15 @@ let b = {
         { label: 'Source', machine_name: 'source', type: 'string', max_length: 256, required: true },
         { label: 'Latest edit', machine_name: 'latest_edit', type: 'timestamp', max_length: 70, required: true },
         { label: 'Latest editor', machine_name: 'latest_editor', type: 'string', max_length: 100, required: true }
+        /* TODO
+            Summary
+            Standarization
+        */
     ]
 }
- 
+
 /* News Example */
-let c ={
+let NewsExample = {
     metadata_id: '1545412468248DI7',
     metadata_name: 'News Metadata',
     slugline: 'US-Finance-Fed',
@@ -61,7 +79,7 @@ let c ={
     author_jobtitle: 'Ny Times Reporter',
     headline: 'Fed to halt QE to advert "bubble"',
     date: '26/02/2019',
-    categories: [ 'economy', 'finance', 'business', 'central bank', 'monetary policy' ],
+    categories: ['economy', 'finance', 'business', 'central bank', 'monetary policy'],
     byline: 'By Meredith Jameson',
     body_text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pulvinar varius mollis.
                 Etiam sed leo non mauris finibus gravida. Cras placerat, nulla nec elementum faucibus,

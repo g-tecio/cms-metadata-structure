@@ -1,0 +1,29 @@
+{
+    "metadata": {
+        "id": "10283asdqw",
+        "name": "Test metadata dog",
+        "owner_id": "aslkdnel123",
+        "attributes": [
+            {
+                "label": "Name",
+                "machine_name": "name",
+                "type": "string",
+                "max_length": 20,
+                "required": true
+            },
+            {
+                "label": "Age",
+                "machine_name": "age",
+                "type": "number",
+                "max_length": 2,
+                "required": true
+            },
+            {
+                "label": "Race",
+                "machine_name": "race",
+                "type": "string",
+                "max_length": 30
+            }
+        ]
+    }
+}
